@@ -1,0 +1,22 @@
+name: Fork
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up environment
+      run: |
+        git config --global user.email "17860972087@163.com"
+        git config --global user.name "MF21150111"
+    - name: Start fork
+      run: |
+        curl -u $username:$password -X POST https://api.github.com/repos/$username/$location/forks
